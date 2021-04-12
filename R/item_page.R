@@ -37,7 +37,7 @@ HPT_item <- function(
     prompt = prompt,
     choices = chord_btn_ids,
     labels = chord_ids,
-    save_answer = TRUE,
+    save_answer = FALSE, # <-- because otherwise the output files will fill up with each page's response
     arrange_vertically = FALSE,
     on_complete = NULL
   )

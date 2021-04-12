@@ -16,6 +16,7 @@ main_test <- function(label, audio_dir, num_items,
                       final_ability.estimator,
                       constrain_answers) {
   item_bank <- HPT::HPT_item_bank
+  item_bank$answer <- paste("chord_btn_", item_bank$answer, sep = "") # <-- to equate the formatting
 
   psychTestRCAT::adapt_test(
     label = label,
