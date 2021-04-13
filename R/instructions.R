@@ -10,8 +10,10 @@ instructions <- function(audio_dir) {
     psychTestR::code_block(function(state, ...) {
       psychTestR::set_local("do_intro", TRUE, state)
     }),
+    info_page("INSTRUCTIONS"),
+    info_page("SAMPLE1a"),
     show_sample_page(audio_dir),
-    info_page("INSTRUCTIONS"), # INCLUDE another page after first sounding example
+    info_page("SAMPLE1b"),
     psychTestR::while_loop(
       test = function(state, ...) psychTestR::get_local("do_intro", state),
       logic = c(
@@ -43,5 +45,4 @@ show_sample_page <- function(audio_dir){
     pos_in_test = 3,
     num_items = 3
   )
-
 }

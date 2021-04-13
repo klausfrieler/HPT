@@ -1,4 +1,4 @@
-training_answers  <- c(3, 2)
+training_answers  <- c("chord_btn_3", "chord_btn_2", -1)
 
 
 ask_repeat <- function(prompt) {
@@ -19,7 +19,7 @@ ask_repeat <- function(prompt) {
 make_practice_page <-  function(page_no, audio_dir) {
   psychTestR::reactive_page(function(answer, ...) {
     correct <- "INCORRECT"
-    if (page_no >= 1 && answer == training_answers[page_no-1]) correct <- "CORRECT"
+    if (page_no > 1 && answer == training_answers[page_no-1]) correct <- "CORRECT"
     feedback <- psychTestR::i18n(correct)
     get_practice_page(page_no, feedback, audio_dir)
   })
@@ -27,7 +27,6 @@ make_practice_page <-  function(page_no, audio_dir) {
 
 
 get_practice_page <- function(page_no, feedback, audio_dir){
-  key <- sprintf("PRACTICE%d", page_no)
   onsets <- 0:3
   offsets <- 1:4
   num_chords <- length(onsets)
@@ -37,10 +36,11 @@ get_practice_page <- function(page_no, feedback, audio_dir){
   trial_wait = 0.5
 
   if(page_no == 1) {
+    key <- sprintf("PRACTICE%d", page_no)
     audio_first = file.path(audio_dir, "I-ii-V-I___original.mp3")
     audio_second = file.path(audio_dir, "I-ii-V-I____3_aug_5_sharp.mp3")
     audio_separator = file.path(audio_dir, "rain-noise-update-5.mp3")
-    HPT_item(
+    page <- HPT_item(
       audio_first = audio_first,
       audio_second = audio_second,
       audio_separator = audio_separator,
@@ -50,26 +50,29 @@ get_practice_page <- function(page_no, feedback, audio_dir){
       offsets = offsets,
       trial_wait = trial_wait,
       pos_in_test = 2,
-      num_items = 3
+      num_items = 3,
+      key = key
     )
   }
 
   if(page_no == 2) {
+    key <- sprintf("PRACTICE%d", page_no)
     audio_first = file.path(audio_dir, "original_prog01_I-V-I-V.mp3")
     audio_second = file.path(audio_dir, "prog01_I-V-I-V_2_min_6.mp3")
     audio_separator = file.path(audio_dir, "rain-noise-update-5.mp3")
-    HPT_item(
-      audio_first = audio_first,
-      audio_second = audio_second,
-      audio_separator = audio_separator,
-      item_number = 3,
-      num_items_in_test = 3,
-      onsets = onsets,
-      offsets = offsets,
-      trial_wait = trial_wait,
-      pos_in_test = 3,
-      num_items = 3
-    )
+
+    page <- HPT_item(audio_first = audio_first,
+                     audio_second = audio_second,
+                     audio_separator = audio_separator,
+                     item_number = 3,
+                     num_items_in_test = 3,
+                     onsets = onsets,
+                     offsets = offsets,
+                     trial_wait = trial_wait,
+                     pos_in_test = 3,
+                     num_items = 3,
+                     feedback = feedback,
+                     key = key)
   }
 
   if(page_no == 3) key <- "TRANSITION"

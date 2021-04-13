@@ -1,15 +1,15 @@
-HPT_item <- function(
-  audio_first,
-  audio_second,
-  audio_separator,
-  onsets,
-  offsets,
-  trial_wait,
-  item_number,
-  num_items_in_test,
-  pos_in_test = NA,
-  num_items = NA
-) {
+HPT_item <- function(audio_first,
+                     audio_second,
+                     audio_separator,
+                     onsets,
+                     offsets,
+                     trial_wait,
+                     item_number,
+                     num_items_in_test,
+                     pos_in_test = NA,
+                     num_items = NA,
+                     feedback = NA,
+                     key = NA) {
   num_chords <- length(onsets)
   stopifnot(num_chords > 1)
   chord_ids <- as.character(seq_len(num_chords))
@@ -24,6 +24,7 @@ HPT_item <- function(
     chord_btn_ids = chord_btn_ids,
     trial_wait = trial_wait
   )
+  if (is.na(key)) {
   prompt <- tags$div(
     if (!is.na(item_number)) tags$p(tags$strong(psychTestR::i18n("PROGRESS_TEXT", sub = c(num_question = item_number,
                                                                                           test_length = num_items_in_test)))),
@@ -31,13 +32,21 @@ HPT_item <- function(
     tags$style(".highlight { background-color: #b0e8f7 !important; color: black !important;}"),
     tags$script(sprintf("var params = %s;", jsonlite::toJSON(params, auto_unbox = TRUE))),
     includeScript("hpt-trial.js")
-  )
+  )}
+  else {
+    prompt <- tags$div(
+    tags$p(psychTestR::i18n(key, html = T,
+                            sub = list(feedback = feedback))),
+    tags$style(".highlight { background-color: #b0e8f7 !important; color: black !important;}"),
+    tags$script(sprintf("var params = %s;", jsonlite::toJSON(params, auto_unbox = TRUE))),
+    includeScript("hpt-trial.js")
+  )}
   psychTestR::NAFC_page(
     label = paste0("q", item_number),
     prompt = prompt,
     choices = chord_btn_ids,
     labels = chord_ids,
-    save_answer = FALSE, # <-- because otherwise the output files will fill up with each page's response
+    save_answer = FALSE,
     arrange_vertically = FALSE,
     on_complete = NULL
   )
