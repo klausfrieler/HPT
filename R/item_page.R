@@ -25,20 +25,20 @@ HPT_item <- function(audio_first,
     trial_wait = trial_wait
   )
   if (is.na(key)) {
-  prompt <- tags$div(
+  prompt <- shiny::tags$div(
     if (!is.na(item_number)) tags$p(tags$strong(psychTestR::i18n("PROGRESS_TEXT", sub = c(num_question = item_number,
                                                                                           test_length = num_items_in_test)))),
-    tags$p(psychTestR::i18n("ITEM_INSTRUCTION")),
-    tags$style(".highlight { background-color: #b0e8f7 !important; color: black !important;}"),
-    tags$script(sprintf("var params = %s;", jsonlite::toJSON(params, auto_unbox = TRUE))),
+    shiny::tags$p(psychTestR::i18n("ITEM_INSTRUCTION")),
+    shiny::tags$style(".highlight { background-color: #b0e8f7 !important; color: black !important;}"),
+    shiny::tags$script(sprintf("var params = %s;", jsonlite::toJSON(params, auto_unbox = TRUE))),
     includeScript("hpt-trial.js")
   )}
   else {
-    prompt <- tags$div(
-    tags$p(psychTestR::i18n(key, html = T,
+    prompt <- shiny::tags$div(
+    shiny::tags$p(psychTestR::i18n(key, html = T,
                             sub = list(feedback = feedback))),
-    tags$style(".highlight { background-color: #b0e8f7 !important; color: black !important;}"),
-    tags$script(sprintf("var params = %s;", jsonlite::toJSON(params, auto_unbox = TRUE))),
+    shiny::tags$style(".highlight { background-color: #b0e8f7 !important; color: black !important;}"),
+    shiny::tags$script(sprintf("var params = %s;", jsonlite::toJSON(params, auto_unbox = TRUE))),
     includeScript("hpt-trial.js")
   )}
   psychTestR::NAFC_page(
