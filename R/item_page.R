@@ -31,7 +31,7 @@ HPT_item <- function(audio_first,
     shiny::tags$p(psychTestR::i18n("ITEM_INSTRUCTION")),
     shiny::tags$style(".highlight { background-color: #b0e8f7 !important; color: black !important;}"),
     shiny::tags$script(sprintf("var params = %s;", jsonlite::toJSON(params, auto_unbox = TRUE))),
-    includeScript("hpt-trial.js")
+    shiny::includeScript("hpt-trial.js")
   )}
   else {
     prompt <- shiny::tags$div(
@@ -39,7 +39,7 @@ HPT_item <- function(audio_first,
                             sub = list(feedback = feedback))),
     shiny::tags$style(".highlight { background-color: #b0e8f7 !important; color: black !important;}"),
     shiny::tags$script(sprintf("var params = %s;", jsonlite::toJSON(params, auto_unbox = TRUE))),
-    includeScript("hpt-trial.js")
+    shiny::includeScript("hpt-trial.js")
   )}
   psychTestR::NAFC_page(
     label = paste0("q", item_number),
