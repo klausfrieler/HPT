@@ -20,6 +20,7 @@
 #' The first language is selected by default
 #' @param ... Further arguments to be passed to \code{\link{HPT}()}.
 #' @export
+
 HPT_demo <- function(num_items = 3L,
                      take_training = TRUE,
                      feedback = HPT::HPT_feedback_with_score(),

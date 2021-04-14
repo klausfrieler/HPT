@@ -38,7 +38,7 @@ show_sample_page <- function(audio_dir){
     audio_second = audio_second,
     audio_separator = audio_separator,
     item_number = 1,
-    num_items_in_test = 3,
+    num_items_in_test = 1,
     onsets = onsets,
     offsets = offsets,
     trial_wait = trial_wait,
