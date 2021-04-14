@@ -26,7 +26,7 @@ HPT_item <- function(audio_first,
   )
   if (is.na(key)) {
   prompt <- shiny::tags$div(
-    if (!is.na(item_number)) tags$p(tags$strong(psychTestR::i18n("PROGRESS_TEXT", sub = c(num_question = item_number,
+    if (!is.na(item_number)) shiny::tags$p(shiny::tags$strong(psychTestR::i18n("PROGRESS_TEXT", sub = c(num_question = item_number,
                                                                                           test_length = num_items_in_test)))),
     shiny::tags$p(psychTestR::i18n("ITEM_INSTRUCTION")),
     shiny::tags$style(".highlight { background-color: #b0e8f7 !important; color: black !important;}"),
