@@ -27,7 +27,7 @@ main_test <- function(label, audio_dir, num_items,
                       final_ability.estimator = final_ability.estimator,
                       constrain_answers = constrain_answers,
                       eligible_first_items = get_eligible_first_items_HPT(),
-                      item_bank = item_bank)
+                      item_bank = HPT::HPT_item_bank)
   )
 }
 
