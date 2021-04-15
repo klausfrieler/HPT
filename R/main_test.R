@@ -17,11 +17,10 @@ main_test <- function(label, audio_dir, num_items,
                       constrain_answers) {
   item_bank <- HPT::HPT_item_bank
   item_bank$answer <- paste("chord_btn_", item_bank$answer, sep = "")
-
   psychTestRCAT::adapt_test(
     label = label,
     item_bank = item_bank,
-    show_item = show_item(audio_dir),
+    show_item = show_item(audio_dir, item_bank),
     stopping_rule = psychTestRCAT::stopping_rule.num_items(n = num_items),
     opt = HPT_options(next_item.criterion = next_item.criterion,
                       next_item.estimator = next_item.estimator,
@@ -34,16 +33,16 @@ main_test <- function(label, audio_dir, num_items,
   )
 }
 
-show_item <- function(audio_dir) {
+show_item <- function(audio_dir, item_bank) {
   function(item, state, ...) {
     stopifnot(is(item, "item"), nrow(item) == 1L)
     items <- psychTestR::get_local("items", state)
     pos_in_test <- psychTestR::get_local("pos_in_test", state)
     item_number <- psychTestRCAT::get_item_number(item)
     num_items_in_test <- psychTestRCAT::get_num_items_in_test(item)
-    answer <- HPT::item_bank$answer[item_number]
-    first_audio_link <- HPT::HPT_item_bank$orig_prog[item_number]
-    second_audio_link <- HPT::HPT_item_bank$prog_name[item_number]
+    answer <- item_bank$answer[item_number]
+    first_audio_link <- item_bank$orig_prog[item_number]
+    second_audio_link <- item_bank$prog_name[item_number]
     audio_first <- file.path(audio_dir, first_audio_link)
     audio_second <- file.path(audio_dir, second_audio_link)
     audio_separator <- file.path(audio_dir, "rain-noise-update-5.mp3")
