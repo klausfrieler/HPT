@@ -15,11 +15,10 @@ main_test <- function(label, audio_dir, num_items,
                       next_item.prior_par = next_item.prior_par,
                       final_ability.estimator,
                       constrain_answers) {
-  item_bank <- HPT::HPT_item_bank
   psychTestRCAT::adapt_test(
     label = label,
-    item_bank = item_bank,
-    show_item = show_item(audio_dir, item_bank),
+    item_bank = HPT::HPT_item_bank,
+    show_item = show_item(audio_dir),
     stopping_rule = psychTestRCAT::stopping_rule.num_items(n = num_items),
     opt = HPT_options(next_item.criterion = next_item.criterion,
                       next_item.estimator = next_item.estimator,
@@ -32,7 +31,7 @@ main_test <- function(label, audio_dir, num_items,
   )
 }
 
-show_item <- function(audio_dir, item_bank) {
+show_item <- function(audio_dir) {
   function(item, state, ...) {
     stopifnot(is(item, "item"), nrow(item) == 1L)
     items <- psychTestR::get_local("items", state)
