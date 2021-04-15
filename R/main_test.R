@@ -16,7 +16,6 @@ main_test <- function(label, audio_dir, num_items,
                       final_ability.estimator,
                       constrain_answers) {
   item_bank <- HPT::HPT_item_bank
-  item_bank$answer <- paste("chord_btn_", item_bank$answer, sep = "")
   psychTestRCAT::adapt_test(
     label = label,
     item_bank = item_bank,
@@ -40,9 +39,9 @@ show_item <- function(audio_dir, item_bank) {
     pos_in_test <- psychTestR::get_local("pos_in_test", state)
     item_number <- psychTestRCAT::get_item_number(item)
     num_items_in_test <- psychTestRCAT::get_num_items_in_test(item)
-    answer <- item_bank$answer[item_number]
-    first_audio_link <- item_bank$orig_prog[item_number]
-    second_audio_link <- item_bank$prog_name[item_number]
+    answer <- HPT::HPT_item_bank$answer[item_number]
+    first_audio_link <- HPT::HPT_item_bank$orig_prog[item_number]
+    second_audio_link <- HPT::HPT_item_bank$prog_name[item_number]
     audio_first <- file.path(audio_dir, first_audio_link)
     audio_second <- file.path(audio_dir, second_audio_link)
     audio_separator <- file.path(audio_dir, "rain-noise-update-5.mp3")
