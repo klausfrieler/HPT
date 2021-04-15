@@ -41,7 +41,7 @@ show_item <- function(audio_dir) {
     pos_in_test <- psychTestR::get_local("pos_in_test", state)
     item_number <- psychTestRCAT::get_item_number(item)
     num_items_in_test <- psychTestRCAT::get_num_items_in_test(item)
-    answer <- item_bank$answer[item_number]
+    answer <- HPT::item_bank$answer[item_number]
     first_audio_link <- HPT::HPT_item_bank$orig_prog[item_number]
     second_audio_link <- HPT::HPT_item_bank$prog_name[item_number]
     audio_first <- file.path(audio_dir, first_audio_link)
