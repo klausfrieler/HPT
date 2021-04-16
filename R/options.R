@@ -5,7 +5,7 @@ HPT_options <- function(next_item.criterion,
                         final_ability.estimator,
                         constrain_answers = FALSE,
                         eligible_first_items = NULL,
-                        item_bank) {
+                        item_bank = HPT::HPT_item_bank) {
   psychTestRCAT::adapt_test_options(
     next_item.criterion = next_item.criterion,
     next_item.estimator = next_item.estimator,
