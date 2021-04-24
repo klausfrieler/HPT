@@ -31,7 +31,11 @@ HPT_item <- function(audio_first,
     shiny::tags$p(psychTestR::i18n("ITEM_INSTRUCTION")),
     shiny::tags$style(".highlight { background-color: #b0e8f7 !important; color: black !important;}"),
     shiny::tags$script(sprintf("var params = %s;", jsonlite::toJSON(params, auto_unbox = TRUE))),
-    shiny::includeScript(system.file("js/hpt-trial.js", package = "HPT"))
+    shiny::includeScript(system.file("js/hpt-trial.js", package = "HPT")),
+    shiny::actionButton(inputId = "playaudio",
+                        label = "Play audio",
+                        onclick = "init_trial();document.getElementById('playaudio').style.visibility='hidden'",
+                        style = "margin: 20px")
   )}
   else {
     prompt <- shiny::tags$div(
@@ -39,8 +43,12 @@ HPT_item <- function(audio_first,
                             sub = list(feedback = feedback))),
     shiny::tags$style(".highlight { background-color: #b0e8f7 !important; color: black !important;}"),
     shiny::tags$script(sprintf("var params = %s;", jsonlite::toJSON(params, auto_unbox = TRUE))),
-    shiny::includeScript(system.file("js/hpt-trial.js", package = "HPT"))
-  )}
+    shiny::includeScript(system.file("js/hpt-trial.js", package = "HPT")),
+    shiny::actionButton(inputId = "playaudio",
+                        label = "Play audio",
+                        onclick = "init_trial();document.getElementById('playaudio').style.visibility='hidden'",
+                        style = "margin: 20px")
+    )}
   psychTestR::NAFC_page(
     label = paste0("q", item_number),
     prompt = prompt,
