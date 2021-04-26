@@ -1,6 +1,6 @@
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
-//setTimeout(init_trial, 5);
+setTimeout(init_trial, 5);
 
 // params
 
@@ -24,6 +24,7 @@ function init_audio_context() {
   if ('webkitAudioContext' in window) context = new webkitAudioContext();
   if ('AudioContext' in window) context = new AudioContext();
   if (!context) {
+    alert('ERROR: This test does not work on your browser. Please try another browser like Chrome, Firefox or Safari 14.');
       throw Error('ERROR: No AudioContext available. Try Chrome, Safari or Firefox Nightly.');
   }
   if (context.state == "suspended") {

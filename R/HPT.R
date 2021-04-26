@@ -91,8 +91,8 @@ HPT <- function(num_items = 18L,
         psychTestR::one_button_page(
         body = shiny::div(
           shiny::h4(psychTestR::i18n("WELCOME"), style = "text-align:center"),
-          shiny::p(psychTestR::i18n("INTRO_TEXT"),
-                   style = "margin-left:20%;margin-right:20%;text-align:justify")
+          shiny::p(psychTestR::i18n("INTRO_TEXT")),
+          style = "margin-left:25%;margin-right:25%;text-align:justify"
          ),
          button_text = psychTestR::i18n("CONTINUE")
         ), dict = dict),

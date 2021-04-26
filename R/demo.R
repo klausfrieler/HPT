@@ -30,13 +30,10 @@ HPT_demo <- function(num_items = 3L,
                      language = "en",
                      ...) {
   elts <- c(
-    psychTestR::new_timeline(psychTestR::one_button_page(
-      body = psychTestR::i18n("WELCOME"),
-      button_text = psychTestR::i18n("CONTINUE")
-    ), dict = dict),
     HPT::HPT(num_items = num_items,
              take_training = take_training,
              feedback = feedback,
+             with_welcome = TRUE,
              dict = dict,
              ...),
     psychTestR::new_timeline(

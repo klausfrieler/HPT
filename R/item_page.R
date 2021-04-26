@@ -28,26 +28,28 @@ HPT_item <- function(audio_first,
   prompt <- shiny::tags$div(
     if (!is.na(item_number)) shiny::tags$p(shiny::tags$strong(psychTestR::i18n("PROGRESS_TEXT", sub = c(num_question = item_number,
                                                                                           test_length = num_items_in_test)))),
-    shiny::tags$p(psychTestR::i18n("ITEM_INSTRUCTION")),
+    shiny::tags$div(psychTestR::i18n("ITEM_INSTRUCTION"), style = "text-align:justify;
+                      margin-left:25%;margin-right:25%;margin-bottom:1em"),
     shiny::tags$style(".highlight { background-color: #b0e8f7 !important; color: black !important;}"),
     shiny::tags$script(sprintf("var params = %s;", jsonlite::toJSON(params, auto_unbox = TRUE))),
-    shiny::includeScript(system.file("js/hpt-trial.js", package = "HPT")),
-    shiny::actionButton(inputId = "playaudio",
-                        label = "Play audio",
-                        onclick = "init_trial();document.getElementById('playaudio').style.visibility='hidden'",
-                        style = "margin: 20px")
+    shiny::includeScript(system.file("js/hpt-trial.js", package = "HPT"))
+    # shiny::actionButton(inputId = "playaudio",
+    #                     label = "Play audio",
+    #                     onclick = "init_trial();document.getElementById('playaudio').style.visibility='hidden'",
+    #                     style = "margin: 20px")
   )}
   else {
     prompt <- shiny::tags$div(
-    shiny::tags$p(psychTestR::i18n(key, html = T,
-                            sub = list(feedback = feedback))),
+    shiny::tags$div(psychTestR::i18n(key, html = T,
+                            sub = list(feedback = feedback)), style = "text-align:justify;
+                      margin-left:25%;margin-right:25%;margin-bottom:1em"),
     shiny::tags$style(".highlight { background-color: #b0e8f7 !important; color: black !important;}"),
     shiny::tags$script(sprintf("var params = %s;", jsonlite::toJSON(params, auto_unbox = TRUE))),
-    shiny::includeScript(system.file("js/hpt-trial.js", package = "HPT")),
-    shiny::actionButton(inputId = "playaudio",
-                        label = "Play audio",
-                        onclick = "init_trial();document.getElementById('playaudio').style.visibility='hidden'",
-                        style = "margin: 20px")
+    shiny::includeScript(system.file("js/hpt-trial.js", package = "HPT"))
+    # shiny::actionButton(inputId = "playaudio",
+    #                     label = "Play audio",
+    #                     onclick = "init_trial();document.getElementById('playaudio').style.visibility='hidden'",
+    #                     style = "margin: 20px")
     )}
   psychTestR::NAFC_page(
     label = paste0("q", item_number),

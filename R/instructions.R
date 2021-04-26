@@ -1,5 +1,5 @@
 info_page <- function(id, style = "text-align:justify;
-                      margin-left:20%;margin-right:20%") {
+                      margin-left:25%;margin-right:25%;margin-bottom:1em") {
   psychTestR::one_button_page(shiny::div(psychTestR::i18n(id, html = TRUE),
                                          style = style),
                               button_text = psychTestR::i18n("CONTINUE"))
@@ -10,7 +10,6 @@ instructions <- function(audio_dir) {
     psychTestR::code_block(function(state, ...) {
       psychTestR::set_local("do_intro", TRUE, state)
     }),
-    info_page("INSTRUCTIONS"),
     info_page("SAMPLE1a"),
     show_sample_page(audio_dir),
     info_page("SAMPLE1b"),
