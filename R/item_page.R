@@ -10,8 +10,13 @@ HPT_item <- function(audio_first,
                      num_items = NA,
                      feedback = NA,
                      key = NA) {
+
   num_chords <- length(onsets)
   stopifnot(num_chords > 1)
+  message(sprintf("Onsets: %s, offsets: %s, num_chords: %s", paste(onsets, collapse =","),
+                  paste(offsets, collapse =","),
+                  num_chords))
+
   chord_ids <- as.character(seq_len(num_chords))
   chord_btn_ids <- paste("chord_btn_", chord_ids, sep = "")
   params <- list(
@@ -51,6 +56,7 @@ HPT_item <- function(audio_first,
     #                     onclick = "init_trial();document.getElementById('playaudio').style.visibility='hidden'",
     #                     style = "margin: 20px")
     )}
+  message("HPT item checkp point")
   psychTestR::NAFC_page(
     label = paste0("q", item_number),
     prompt = prompt,
