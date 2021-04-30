@@ -75,7 +75,7 @@ HPT <- function(num_items = 18L,
                 constrain_answers = FALSE,
                 dict = HPT::HPT_dict) {
   audio_dir <- "https://media.gold-msi.org/test_materials/HPT"
-
+  messagef("HPT() called")
   stopifnot(purrr::is_scalar_character(label),
             purrr::is_scalar_integer(num_items) || purrr::is_scalar_double(num_items),
             purrr::is_scalar_logical(take_training),
