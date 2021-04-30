@@ -11,6 +11,7 @@ HPT_item <- function(audio_first,
                      feedback = NA,
                      key = NA) {
   message("HPT_item called")
+  browser()
   num_chords <- length(onsets)
   stopifnot(num_chords > 1)
   message(sprintf("Onsets: %s, offsets: %s, num_chords: %s, feedback = %s, key = %s", paste(onsets, collapse =","),

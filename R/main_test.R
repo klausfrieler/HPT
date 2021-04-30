@@ -34,8 +34,11 @@ main_test <- function(label, audio_dir, num_items,
 
 show_item <- function(audio_dir) {
   function(item, state, ...) {
+    message("show_item called")
+
     stopifnot(is(item, "item"), nrow(item) == 1L)
     items <- psychTestR::get_local("items", state)
+    browser()
     pos_in_test <- psychTestR::get_local("pos_in_test", state)
     item_number <- psychTestRCAT::get_item_number(item)
     num_items_in_test <- psychTestRCAT::get_num_items_in_test(item)
