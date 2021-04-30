@@ -28,7 +28,8 @@ main_test <- function(label, audio_dir, num_items,
                       next_item.prior_par = next_item.prior_par,
                       final_ability.estimator = final_ability.estimator,
                       constrain_answers = constrain_answers,
-                      eligible_first_items = get_eligible_first_items_HPT(),
+                      eligible_first_items = NULL,
+                      #eligible_first_items = get_eligible_first_items_HPT(),
                       item_bank = item_bank)
   )
 }
