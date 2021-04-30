@@ -11,8 +11,8 @@ get_eligible_first_items_HPT <- function(){
 main_test <- function(label, audio_dir, num_items,
                       next_item.criterion,
                       next_item.estimator,
-                      next_item.prior_dist = next_item.prior_dist,
-                      next_item.prior_par = next_item.prior_par,
+                      next_item.prior_dist,
+                      next_item.prior_par,
                       final_ability.estimator,
                       constrain_answers) {
   item_bank <- HPT::HPT_item_bank
