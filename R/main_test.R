@@ -16,6 +16,7 @@ main_test <- function(label, audio_dir, num_items,
                       final_ability.estimator,
                       constrain_answers) {
   item_bank <- HPT::HPT_item_bank
+  messagef("main_test() called")
   psychTestRCAT::adapt_test(
     label = label,
     item_bank = item_bank,
