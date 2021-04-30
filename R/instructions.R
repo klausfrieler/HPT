@@ -32,6 +32,7 @@ show_sample_page <- function(audio_dir){
   audio_second <- file.path(audio_dir, "prog01_I-V-I-V_3_maj_6.mp3")
   audio_separator <- file.path(audio_dir, "rain-noise-update-5.mp3")
   trial_wait = 0.5
+  message(sprintf("Onsets: %s, offsets: %s", paste(onsets, collapse =","), paste(offsets, collapse =",")))
   HPT_item(
     audio_first = audio_first,
     audio_second = audio_second,
