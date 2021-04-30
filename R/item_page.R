@@ -10,13 +10,14 @@ HPT_item <- function(audio_first,
                      num_items = NA,
                      feedback = NA,
                      key = NA) {
-
+  message("HPT_item called")
   num_chords <- length(onsets)
   stopifnot(num_chords > 1)
-  message(sprintf("Onsets: %s, offsets: %s, num_chords: %s, feedback = %s", paste(onsets, collapse =","),
+  message(sprintf("Onsets: %s, offsets: %s, num_chords: %s, feedback = %s, key = %s", paste(onsets, collapse =","),
                   paste(offsets, collapse =","),
                   num_chords,
-                  feedback))
+                  feedback,
+                  key))
 
   chord_ids <- as.character(seq_len(num_chords))
   chord_btn_ids <- paste("chord_btn_", chord_ids, sep = "")
