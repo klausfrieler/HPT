@@ -13,9 +13,10 @@ HPT_item <- function(audio_first,
 
   num_chords <- length(onsets)
   stopifnot(num_chords > 1)
-  message(sprintf("Onsets: %s, offsets: %s, num_chords: %s", paste(onsets, collapse =","),
+  message(sprintf("Onsets: %s, offsets: %s, num_chords: %s, feedback = %s", paste(onsets, collapse =","),
                   paste(offsets, collapse =","),
-                  num_chords))
+                  num_chords,
+                  feedback))
 
   chord_ids <- as.character(seq_len(num_chords))
   chord_btn_ids <- paste("chord_btn_", chord_ids, sep = "")
@@ -29,6 +30,7 @@ HPT_item <- function(audio_first,
     chord_btn_ids = chord_btn_ids,
     trial_wait = trial_wait
   )
+  message(paste(as.character(params), collapse = ", "))
   if (is.na(key)) {
   prompt <- shiny::tags$div(
     if (!is.na(item_number)) shiny::tags$p(shiny::tags$strong(psychTestR::i18n("PROGRESS_TEXT", sub = c(num_question = item_number,
@@ -56,7 +58,8 @@ HPT_item <- function(audio_first,
     #                     onclick = "init_trial();document.getElementById('playaudio').style.visibility='hidden'",
     #                     style = "margin: 20px")
     )}
-  message("HPT item checkp point")
+  message("HPT item check point")
+  message(as.character(prompt))
   psychTestR::NAFC_page(
     label = paste0("q", item_number),
     prompt = prompt,
