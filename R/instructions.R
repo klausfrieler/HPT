@@ -24,24 +24,14 @@ instructions <- function(audio_dir) {
 }
 
 show_sample_page <- function(audio_dir){
-  num_chords <- length(onsets)
-  stopifnot(num_chords > 1)
-  chord_ids <- as.character(seq_len(num_chords))
-  chord_btn_ids <- paste("chord_btn_", chord_ids, sep = "")
   audio_first <- file.path(audio_dir, "original_prog01_I-V-I-V.mp3")
   audio_second <- file.path(audio_dir, "prog01_I-V-I-V_3_maj_6.mp3")
   audio_separator <- file.path(audio_dir, "rain-noise-update-5.mp3")
-  trial_wait = 0.5
   HPT_item(
     audio_first = audio_first,
     audio_second = audio_second,
     audio_separator = audio_separator,
     item_number = 1,
-    num_items_in_test = 1,
-    onsets = onsets,
-    offsets = offsets,
-    trial_wait = trial_wait,
-    pos_in_test = 3,
-    num_items = 3
+    num_items_in_test = 1
   )
 }

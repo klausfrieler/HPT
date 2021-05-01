@@ -1,5 +1,3 @@
-onsets <- 0:3
-offsets <- 1:4
 
 get_eligible_first_items_HPT <- function(){
   lower_sd <- mean(HPT::HPT_item_bank$difficulty) - stats::sd(HPT::HPT_item_bank$difficulty)
@@ -15,6 +13,7 @@ main_test <- function(label, audio_dir, num_items,
                       next_item.prior_par,
                       final_ability.estimator,
                       constrain_answers) {
+
   item_bank <- HPT::HPT_item_bank
   messagef("main_test() called")
   psychTestRCAT::adapt_test(
@@ -37,18 +36,14 @@ main_test <- function(label, audio_dir, num_items,
 show_item <- function(audio_dir) {
   function(item, state, ...) {
     message("show_item called")
+    browser()
 
     stopifnot(is(item, "item"), nrow(item) == 1L)
-    items <- psychTestR::get_local("items", state)
-    browser()
-    pos_in_test <- psychTestR::get_local("pos_in_test", state)
     item_number <- psychTestRCAT::get_item_number(item)
     num_items_in_test <- psychTestRCAT::get_num_items_in_test(item)
     answer <- item$answer
-    first_audio_link <- item$orig_prog
-    second_audio_link <- item$prog_name
-    audio_first <- file.path(audio_dir, first_audio_link)
-    audio_second <- file.path(audio_dir, second_audio_link)
+    audio_first <- file.path(audio_dir, item$orig_prog)
+    audio_second <- file.path(audio_dir, item$prog_name)
     audio_separator <- file.path(audio_dir, "rain-noise-update-5.mp3")
     trial_wait <- 0.5
     HPT_item(
@@ -56,13 +51,7 @@ show_item <- function(audio_dir) {
       audio_second = audio_second,
       audio_separator = audio_separator,
       item_number = item_number,
-      num_items_in_test = num_items_in_test,
-      onsets = onsets,
-      offsets = offsets,
-      trial_wait = trial_wait,
-      pos_in_test = item,
-      num_items = length(items)
-    )
+      num_items_in_test = num_items_in_test)
     }
 }
 

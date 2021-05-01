@@ -1,34 +1,23 @@
 HPT_item <- function(audio_first,
                      audio_second,
                      audio_separator,
-                     onsets,
-                     offsets,
-                     trial_wait,
+                     num_chords = 4,
+                     trial_wait = .5,
                      item_number,
                      num_items_in_test,
-                     pos_in_test = NA,
-                     num_items = NA,
                      feedback = NA,
                      key = NA) {
   message("HPT_item called")
   browser()
-  num_chords <- length(onsets)
-  stopifnot(num_chords > 1)
-  message(sprintf("Onsets: %s, offsets: %s, num_chords: %s, feedback = %s, key = %s", paste(onsets, collapse =","),
-                  paste(offsets, collapse =","),
-                  num_chords,
-                  feedback,
-                  key))
 
-  chord_ids <- as.character(seq_len(num_chords))
-  chord_btn_ids <- paste("chord_btn_", chord_ids, sep = "")
+  chord_btn_ids <- paste("chord_btn_", seq_len(num_chords), sep = "")
   params <- list(
     audio_first = audio_first,
     audio_second = audio_second,
     audio_separator = audio_separator,
-    onsets = onsets,
-    offsets = offsets,
-    chord_ids = chord_ids,
+    onsets = seq(0, num_chords - 1),
+    offsets = 1:num_chords,
+    chord_ids = 1:num_chords,
     chord_btn_ids = chord_btn_ids,
     trial_wait = trial_wait
   )
@@ -59,7 +48,7 @@ HPT_item <- function(audio_first,
     label = paste0("q", item_number),
     prompt = prompt,
     choices = chord_btn_ids,
-    labels = chord_ids,
+    labels = as.character(1:num_chords),
     save_answer = FALSE,
     arrange_vertically = FALSE,
     on_complete = NULL
