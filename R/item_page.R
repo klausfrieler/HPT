@@ -8,7 +8,7 @@ HPT_item <- function(audio_first,
                      feedback = NA,
                      key = NA) {
   message("HPT_item called")
-  browser()
+  #browser()
 
   chord_btn_ids <- paste("chord_btn_", seq_len(num_chords), sep = "")
   params <- list(
@@ -49,7 +49,7 @@ HPT_item <- function(audio_first,
     prompt = prompt,
     choices = chord_btn_ids,
     labels = as.character(1:num_chords),
-    save_answer = FALSE,
+    save_answer = TRUE,
     arrange_vertically = FALSE,
     on_complete = NULL
   )

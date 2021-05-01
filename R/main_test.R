@@ -36,7 +36,7 @@ main_test <- function(label, audio_dir, num_items,
 show_item <- function(audio_dir) {
   function(item, state, ...) {
     message("show_item called")
-    browser()
+    #browser()
 
     stopifnot(is(item, "item"), nrow(item) == 1L)
     item_number <- psychTestRCAT::get_item_number(item)
