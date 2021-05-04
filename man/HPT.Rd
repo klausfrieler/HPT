@@ -25,6 +25,10 @@ HPT(
 
 \item{take_training}{(Logical scalar) Whether to include the training phase.}
 
+\item{with_welcome}{(Logical scalar) Whether to include a welcome page}
+
+\item{with_finish}{(Logical scalar) Whether to include  a finish page page}
+
 \item{label}{(Character scalar) Label to give the HPT results in the output file.}
 
 \item{feedback}{(Function) Defines the feedback to give the participant

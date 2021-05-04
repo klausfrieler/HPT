@@ -15,7 +15,7 @@ main_test <- function(label, audio_dir, num_items,
                       constrain_answers) {
 
   item_bank <- HPT::HPT_item_bank
-  messagef("main_test() called")
+  #messagef("main_test() called")
   psychTestRCAT::adapt_test(
     label = label,
     item_bank = item_bank,
@@ -35,7 +35,7 @@ main_test <- function(label, audio_dir, num_items,
 
 show_item <- function(audio_dir) {
   function(item, state, ...) {
-    message("show_item called")
+    #message("show_item called")
     #browser()
 
     stopifnot(is(item, "item"), nrow(item) == 1L)

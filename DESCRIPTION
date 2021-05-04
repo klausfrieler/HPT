@@ -2,7 +2,7 @@ Package: HPT
 Type: Package
 Title: Harmony Progression Discrimination Test
 Version: 0.1.0
-Author: Nicolas Ruth
+Author: Nicolas Ruth, Klaus Frieler
 Maintainer: Nicolas Ruth <drnicolasruth@gmail.com>
 Description: Implementation of a Harmony Progression Discrimination Test
 License: MIT + file LICENSE

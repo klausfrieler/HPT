@@ -1,5 +1,5 @@
-source("R/HPT.R")
-options(shiny.error = browser)
+#source("R/HPT.R")
+#options(shiny.error = browser)
 debug_locally <- !grepl("shiny-server", getwd())
 
 #' Standalone HPT
@@ -11,6 +11,7 @@ debug_locally <- !grepl("shiny-server", getwd())
 #' @param with_feedback (Scalar boolean) Indicates if performance feedback will be given at the end of the test. Defaults to  FALSE
 #' @param take_training (Boolean scalar) Defines whether instructions and training are included.
 #' Defaults to TRUE.
+#' @param with_welcome (Logical scalar) Whether to include a welcome page
 #' @param admin_password (Scalar character) Password for accessing the admin panel.
 #' @param researcher_email (Scalar character)
 #' If not \code{NULL}, this researcher's email address is displayed

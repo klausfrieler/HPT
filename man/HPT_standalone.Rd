@@ -28,6 +28,8 @@ HPT_standalone(
 \item{take_training}{(Boolean scalar) Defines whether instructions and training are included.
 Defaults to TRUE.}
 
+\item{with_welcome}{(Logical scalar) Whether to include a welcome page}
+
 \item{admin_password}{(Scalar character) Password for accessing the admin panel.}
 
 \item{researcher_email}{(Scalar character)

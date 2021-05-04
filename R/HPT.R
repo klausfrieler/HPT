@@ -1,6 +1,6 @@
-library(tidyverse)
-library(psychTestR)
-library(psychTestRCAT)
+#library(tidyverse)
+#library(psychTestR)
+#library(psychTestRCAT)
 #source("data_raw/HPT_dict.R")
 #source("data_raw/HPT_item_bank.R")
 #source("R/feedback.R")
@@ -23,6 +23,8 @@ library(psychTestRCAT)
 #' consider using \code{\link{HPT_standalone}()}.
 #' @param num_items (Integer scalar) Number of items in the test.
 #' @param take_training (Logical scalar) Whether to include the training phase.
+#' @param with_welcome (Logical scalar) Whether to include a welcome page
+#' @param with_finish (Logical scalar) Whether to include  a finish page page
 #' @param label (Character scalar) Label to give the HPT results in the output file.
 #' @param feedback (Function) Defines the feedback to give the participant
 #' at the end of the test.
@@ -75,7 +77,7 @@ HPT <- function(num_items = 18L,
                 constrain_answers = FALSE,
                 dict = HPT::HPT_dict) {
   audio_dir <- "https://media.gold-msi.org/test_materials/HPT"
-  messagef("HPT() called")
+  #messagef("HPT() called")
   stopifnot(purrr::is_scalar_character(label),
             purrr::is_scalar_integer(num_items) || purrr::is_scalar_double(num_items),
             purrr::is_scalar_logical(take_training),
