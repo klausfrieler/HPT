@@ -7,7 +7,7 @@ HPT_item <- function(audio_first,
                      num_items_in_test,
                      feedback = NA,
                      key = NA) {
-  message("HPT_item called")
+  #message("HPT_item called")
   #browser()
 
   chord_btn_ids <- paste("chord_btn_", seq_len(num_chords), sep = "")
@@ -21,7 +21,7 @@ HPT_item <- function(audio_first,
     chord_btn_ids = chord_btn_ids,
     trial_wait = trial_wait
   )
-  message(paste(as.character(params), collapse = ", "))
+  #message(paste(as.character(params), collapse = ", "))
   if (is.na(key)) {
     prompt <- shiny::tags$div(
       if (!is.na(item_number))
@@ -43,7 +43,7 @@ HPT_item <- function(audio_first,
     shiny::tags$script(sprintf("var params = %s;", jsonlite::toJSON(params, auto_unbox = TRUE))),
     shiny::includeScript(system.file("js/hpt-trial.js", package = "HPT"))
     )}
-  message("HPT item check point")
+  #message("HPT item check point")
   psychTestR::NAFC_page(
     label = paste0("q", item_number),
     prompt = prompt,

@@ -1,7 +1,7 @@
 Package: HPT
 Type: Package
 Title: Harmony Progression Discrimination Test
-Version: 0.1.0
+Version: 0.1.1
 Author: Nicolas Ruth, Klaus Frieler
 Maintainer: Nicolas Ruth <drnicolasruth@gmail.com>
 Description: Implementation of a Harmony Progression Discrimination Test
@@ -24,4 +24,4 @@ Suggests:
     codetools,
     devtools (>= 1.13.6)
 Remotes: pmcharrison/psychTestR, pmcharrison/psychTestRCAT
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.3
